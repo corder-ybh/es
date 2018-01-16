@@ -1,0 +1,244 @@
+/*商品图片的样式*/
+
+.goodsdetail img {
+	margin-top: 0px;
+}
+
+.nb_follow {
+	background-color: rgba(1, 2, 0, 0.7);
+	color: #fff;
+	font-size: 12px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	max-width: 640px;
+	height: 50px;
+	line-height: 50px;
+	z-index: 999999;
+}
+
+.nb_follow_btn {
+	margin-left: 20px;
+	padding: 5px 5px 6px 5px;
+	text-align: center;
+	border-radius: 5px;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #62b900;
+}
+
+.nb_follow_close {
+	font-size: 10px;
+	float: right;
+	margin-top: 15px;
+	margin-right: 15px;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+	border-radius: 100px;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	color: #62b900;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.nb-sharecanvas {
+	z-index: 99999;
+	/*元素堆叠顺序*/
+	position: fixed;
+	/*生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。*/
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.9);
+	/*在RGB的基础上加进了一个通道Alpha a透明度 0-1*/
+	width: 100%;
+	height: 100%;
+	display: flex;
+	/*Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。*/
+	justify-content: center;
+	/*项目位于容器的中心。*/
+	flex-direction: column;
+	/*主轴与块轴方向作为默认的书写模式。即纵向从上往下排列（顶对齐）。*/
+	align-items: center;
+	/**/
+}
+
+.nb-sharecanvas .nb-canvas {
+	width: 70%;
+	max-width: 640px;
+	position: relative;
+	top: 0;
+}
+
+.nb-canvas .imgData {
+	width: 100%;
+	display: none;
+}
+
+.nb-canvas-explain {
+	border-radius: 5px;
+	background: #555;
+	text-align: center;
+	padding: 5px;
+}
+
+.am-icon-close {
+	background: white;
+	color: #555;
+	position: absolute;
+	right: -30px;
+	top: -15px;
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: url("../addons/bsht_tbk/res/js/layer/skin/default/icon.png") no-repeat;
+	background-position: -180px -31px;
+}
+
+.loadingbar2 {
+	width: 100%;
+	height: 100px;
+	display: none;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-top: -1rem;
+	z-index: 10000000;
+	padding: 5px;
+	text-align: center;
+}
+
+.loadingbar3 {
+	width: 100%;
+	height: 100px;
+	display: none;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-top: -1rem;
+	z-index: 10000000;
+	padding: 5px;
+	text-align: center;
+}
+
+.loading3 {
+	width: 120px;
+	height: 80px;
+	opacity: 0.6;
+	font-size: 12px;
+	color: #fff;
+	background: #000;
+	text-align: center;
+	border-radius: 5px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	margin: 0px auto;
+}
+
+.jump {
+	float: left;
+	position: relative;
+	-webkit-animation: jump 1s linear 0s;
+	animation-direction: alternate;
+	-webkit-animation-direction: alternate;
+	animation-iteration-count: 2;
+}
+
+@-webkit-keyframes jump {
+	0% {
+		top: 0px;
+		color: red;
+	}
+	50% {
+		top: -2px;
+		color: green;
+	}
+	100% {
+		top: 2px;
+		color: blue;
+	}
+}
+
+@-webkit-keyframes fadeInOut {
+	0% {
+		opacity: 0.3;
+		transform: scale(1);
+		-webkit-transform: scale(1);
+	}
+	25% {
+		opacity: 0.6;
+		transform: scale(1.01);
+		-webkit-transform: scale(1.01);
+	}
+	50% {
+		opacity: 0.8;
+		transform: scale(1);
+		-webkit-transform: scale(1);
+	}
+	75% {
+		opacity: 1;
+		transform: scale(1);
+		-webkit-transform: scale(1);
+	}
+}
+
+.anim_fade_image {
+	-webkit-animation-name: fadeInOut;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-direction: alternate;
+	animation-iteration-count: 1;
+}
+
+.nb_follow {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	font-size: 12px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	max-width: 640px;
+	height: 50px;
+	line-height: 50px;
+	z-index: 999999;
+}
+
+.nb_follow_btn {
+	margin-left: 20px;
+	padding: 5px 5px 6px 5px;
+	text-align: center;
+	border-radius: 5px;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #62b900;
+}
+
+.nb_follow_close {
+	font-size: 10px;
+	float: right;
+	margin-top: 15px;
+	margin-right: 15px;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+	border-radius: 100px;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	color: #62b900;
+	background-color: rgba(255, 255, 255, 1);
+}

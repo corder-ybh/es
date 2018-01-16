@@ -1,0 +1,135 @@
+.progress {
+						margin-top: 5px;
+						padding: 10px;
+					}
+					
+					.progress .progress-count {
+						display: inline-block;
+						vertical-align: top;
+					}
+					
+					.progress .progress-count .progress-count-main {
+						position: relative;
+						width: 100px;
+						height: 22px;
+						background: url('images/nbyhq_progress.png') no-repeat center;
+						background-size: 100% 100%;
+						border-radius: 0px;
+						overflow: hidden;
+					}
+					
+					.progress .progress-count .progress-count-main .progress-count-pace {
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 22px;
+						background-color: #C0BEBE;
+						-moz-animation: nbyhq 1.5s ease-out;
+						-webkit-animation: nbyhq 1.5s ease-out;
+					}
+					
+					@-moz-keyframes nbyhq {
+						0% {
+							width: 0px;
+						}
+						100% {
+							width: %;
+						}
+					}
+					
+					@-webkit-keyframes nbyhq {
+						0% {
+							width: 0px;
+						}
+						100% {
+							width: %;
+						}
+					}
+					
+					.progress .progress-count .progress-count-main .progress-count-text {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100px;
+						height: 22px;
+						line-height: 22px;
+						font-size: 11px;
+						color: #fff;
+						text-align: center;
+						font-weight: 400;
+						float: left;
+						padding-left: 0px;
+					}
+					
+					.progress .count-price {
+						display: inline-block;
+						vertical-align: top;
+						float: right;
+						margin-top: 1px;
+						margin-bottom: 1px;
+					}
+					
+					.progress .count-num {
+						display: inline-block;
+						vertical-align: top;
+						float: right;
+						margin-top: 1px;
+						margin-bottom: 1px;
+						padding-right: 10px;
+					}
+					
+					.progress .count-num .count-num-bgm span {
+						display: inline-block;
+						height: 15px;
+						font-size: 11px;
+						line-height: 15px;
+						background: #fff;
+						margin: 1px;
+						padding: 2px 5px 2px 5px;
+						color: #1DC708;
+					}
+					
+					.progress .count-num .count-num-bgm s {
+						font-size: 11px;
+						color: #FFF;
+						text-decoration: none;
+						font-family: "Microsoft YaHei"!important;
+						font-weight: 400;
+						padding: 4px;
+					}
+					
+					.progress .count-num .count-num-bgm {
+						margin-top: 0px;
+						margin-bottom: 0px;
+						height: 21px;
+						background: url('images/nbyhq_num.png') no-repeat center;
+						background-size: 100% 100%;
+					}
+					
+					.progress .count-price .count-price-bgm span {
+						display: inline-block;
+						height: 15px;
+						font-size: 11px;
+						line-height: 15px;
+						background: #fff;
+						margin: 1px;
+						padding: 2px 5px 2px 5px;
+						color: #FE814B;
+					}
+					
+					.progress .count-price .count-price-bgm s {
+						font-size: 11px;
+						color: #FFF;
+						text-decoration: none;
+						font-family: "Microsoft YaHei"!important;
+						font-weight: 400;
+						padding: 4px;
+					}
+					
+					.progress .count-price .count-price-bgm {
+						margin-top: 0px;
+						margin-bottom: 0px;
+						height: 21px;
+						background: url('images/nbyhq_price.png') no-repeat center;
+						background-size: 100% 100%;
+					}
