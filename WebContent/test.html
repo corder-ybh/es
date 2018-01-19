@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹窗</title>
+</head>
+<style>
+    #alert_box
+    {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        display: none;
+        position: absolute;
+    }
+</style>
+<body>
+<div id="alert_box"></div>
+<button id="btn">弹窗</button>
+<script>
+    var width=document.documentElement.clientWidth||document.body.clientWidth;
+    var height=document.documentElement.clientHeight||document.body.clientHeight;
+    document.getElementById("btn").addEventListener("click",alert_box);
+    function alert_box()
+    {
+        document.getElementById("alert_box").style="display:inline;position:absolute;left:"+Math.floor((width-200)/2)+"px;top:"+Math.floor((height-200)/2)+"px;";
+    }
+</script>
+</body>
+</html>

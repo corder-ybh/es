@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>消息弹框</title>
+
+	<link rel="stylesheet" href="./my_popup.css">
+	<script src="./my_popup.js"></script>
+
+	</head>
+	<body>
+
+	<button class="popup-show"  data-linked-id="onePopup">按钮</button>
+	
+	<div class="my-popup one-popup" id="onePopup">
+ 	 <div class="popup-content">
+   	 	<p class="msg">我是一个弹窗，点击透明遮罩层我就会隐藏</p>
+ 	 </div>
+	</div>
+	<script>
+		window.onload = function () {
+			var oOnePopup = new MyPopup('onePopup');
+			
+		}
+	</script>
+</body>
+</html>
