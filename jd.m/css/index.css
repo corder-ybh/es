@@ -1,0 +1,130 @@
+/*最外层的容器*/
+.jd_container {
+    width:100%;
+}
+
+/*顶部通栏*/
+.jd_header{
+    height:40px;
+    width:100%;
+    background-color: rgb(201,21,35);
+    position: relative;
+
+    /*设置pading将input挤进去*/
+    padding-left: 70px;
+    padding-right: 60px;
+}
+.jd_header .header_logo{
+    width:60px;
+    height:36px;
+    position: absolute;
+    left:5px;
+    top:2px;
+    /*background-color: orange;*/
+
+    /*设置背景图片*/
+    background-image: url('../images/sprites.png');
+    background-repeat:no-repeat;
+    background-position: 0-103px;
+
+    /*设置背景图片的大小，压缩了一倍，目的是为了防止用户看到像素颗粒*/
+    -webkit-background-size:200px 200px;
+    background-size:200px 200px;
+}
+
+/*搜索图标*/
+.jd_header .header_glass{
+    width: 20px;
+    height: 20px;
+    /*absolute绝对定位，relative相对定位*/
+    position: absolute;
+    background-image: url('../images/sprites.png');
+    background-size:200px 200px;
+    background-position: -60px -109px;
+    background-repeat: no-repeat;
+    left: 75px;
+    top: 10px;
+}
+
+/*搜索框*/
+.jd_header .header_search{
+    width:100%;
+    height:30px;
+    margin-top: 5px;
+    /*变成圆角矩形*/
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    /*内容挤到右边，给搜索图标留出空间*/
+    padding-left: 25px;
+    }
+/*登录字样*/
+.jd_header .header_login{
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    line-height: 40px;
+    color:white;
+    font-size: 17px;
+}
+
+/*顶部轮播图*/
+.jd_banner{
+    width: 100%;
+    /*100px*/
+    overflow: hidden;
+    /*为了索引能够定位，所以添加position*/
+    position: relative;
+
+}
+
+.jd_banner .banner_images{
+    /*10倍宽度，为了在横向放10张图片*/
+    width: 1000%;
+}
+.jd_banner .banner_images li{
+    float: left;
+    /*100px*/
+    width: 10%;
+}
+
+.jd_banner .banner_images li a{
+    /*	此元素将显示为块级元素，此元素前后会带有换行符。*/
+    display: block;
+    width: 100%;
+}
+
+.jd_banner .banner_images li a img{
+    display: block;
+    width: 100%;
+    /*都是100%所以都是一样大，恰好占满屏幕*/
+}
+
+/*轮播图里的索引标签*/
+.jd_banner .banner_index{
+    position: absolute;
+    bottom: 10px;
+    /*小圆点们居中，*/
+    left: 50%;
+    margin-left: -44px;
+}
+
+.jd_banner .banner_index li{
+    /*	元素向右浮动。*/
+    float: left;
+    width: 6px;
+    height: 6px;
+    /*border-radius 以百分比定义圆角的形状。*/
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    /* solid	定义实线。*/
+    border: 1px solid white;
+    /*小圆点们均匀散开*/
+    margin-left: 5px;
+}
+
+/*如果li标签有.current class 会使用如下样式*/
+.jd_banner .banner_index li.current{
+    background-color: white;
+}
