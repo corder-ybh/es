@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>smarty示例2</title>
+</head>
+<body>
+    1.第一句首字母要大写：{$str1|capitalize}<br>
+    2.第二句模板变量 + bhy：{$str2|cat:"BHY"}<br>
+    3.第三句输出当前日期：{$str3|date_format:"%Y年 %m月 %d日"}<br>
+    4.第四句php程序中不处理，他显示默认值： {$str4|default:"没有值"}<br>
+    5.第五句缩进8个空白字符，并使用“*”来取代这8个空白字符：<br>
+    {$str5|indent:8:"*"}<br>
+    6.第六句把BHY@163.com全部变为小写：{$str6|lower}<br>
+    7.第七句把变量中的teacherli替换成 bhyang：{$str7|replace:"teacherli":"bhyang"}<br>
+    8.第八句为组合使用变量修改器：{$str8|capitalize|cat:"这是新加的时间："|date_format:"%Y年 %m月 %d日"|lower}
+</body>
+</html>
