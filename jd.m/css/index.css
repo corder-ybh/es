@@ -229,4 +229,55 @@
     text-align: center;
     line-height: 15px;
 }
-.jd_main .main_content:nth-child(1) .content_top a{}
+
+/*这样可以取到第三个、第六个*/
+.jd_main .main_content:nth-child(1) .content_top ul li:nth-child(3n){
+    background-color: transparent;
+    color: black;
+}
+/*更多的样式*/
+.jd_main .main_content:nth-child(1) .content_top a{
+    color: gray;
+    line-height: 32px;
+    margin-right: 5px;
+}
+
+.jd_main .main_content:nth-child(1) .content_bottom{
+    width: 100%;
+}
+
+.jd_main .main_content:nth-child(1) .content_bottom ul{
+    width: 100%;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li{
+    float: left;
+    /*为了保证零头不影响布局，若父盒子像素太大，则肉眼能看出*/
+    width:33.333333333%;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li a{
+    display: block;
+    width: 100% ;
+    border-right: 1px solid gray;
+}
+/*最后一个li标签里面的a标签，不要里面的边框*/
+.jd_main .main_content:nth-child(1) .content_bottom ul li:last-child a{
+    border-right: none;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li a img{
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
+/*a标签和p标签是平级的，所以a标签的索引值是1，p是从二开始的*/
+.jd_main .main_content:nth-child(1) .content_bottom ul li p{
+    text-align: center;
+    padding: 3px 0;
+    font-size: 12px;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li p:nth-child(2){
+    color: rgb(201,21,35);
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li p:nth-child(3) {
+    color: black;
+    text-decoration: line-through;
+}
