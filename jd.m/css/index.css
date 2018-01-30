@@ -281,3 +281,42 @@
     color: black;
     text-decoration: line-through;
 }
+
+/*为除了第一个的其他主要区域盒子设置样式*/
+.jd_main .main_content:nth-child(n+2) .content_top{}
+.jd_main .main_content:nth-child(n+2) .content_top span{
+    color:rgb(201,21,35);
+    line-height: 32px; /*上下居中*/
+    margin-left: 15px;/*距离左边有一段间距*/
+    position: relative;
+}
+.jd_main .main_content:nth-child(n+2) .content_top span::before{
+    content: '';
+    position: absolute;
+
+    /*宽高*/
+    height: 15px;
+    width: 5px;
+    background-color:rgb(201,21,35);
+    left: -10px;
+    top: 8.5px;
+}
+/*设置除了秒杀区域的主要内容的底部样式*/
+.jd_main .main_content:nth-child(n+2) .content_bottom{
+    width: 100%;
+
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul{
+    width: 100%;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul li{
+    width: 50%;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul li a{
+    width: 100%;
+    display: block;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul li a img{
+    width: 100%;
+    display: block;
+}
