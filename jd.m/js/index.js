@@ -2,3 +2,6 @@
 window.onload() = function () {
     //顶部通栏滚动的效果
 }
+function dev() {
+    //没啥子卵用，就是测试下develop和feature冲突时的情况
+}
