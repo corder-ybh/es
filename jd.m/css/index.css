@@ -10,7 +10,9 @@
     height:40px;
     width:100%;
     background-color: rgb(201,21,35);
-    position: relative;
+    /*要固定在顶部，所以改为fixed*/
+    position: fixed;
+    z-index: 99;
 
     /*设置pading将input挤进去*/
     padding-left: 70px;
