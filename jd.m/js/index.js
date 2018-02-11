@@ -121,10 +121,38 @@ function cutDownTime() {
         //秒
         liArr[6].innerHTML = Math.floor(sec / 10);      //
         liArr[7].innerHTML = sec
-    },1000)
+    },1000);
 }
 
 //轮播图的效果
+/**
+ *  获取必须知道的变量
+ *  步骤1：不考虑过度效果 直接切换
+ *     定时器中 index++
+ *         判断是否越界
+ *         修改轮播图中ul的位置
+ */
 function banner() {
-    
+    //1、获取变量
+    //屏幕的宽度
+    var width = document.body.offsetWidth;
+    //console.log(width);
+    //2、获取轮播图的ul
+    var moveUl = document.querySelector('.banner_images');
+    // 索引的li标签
+    var indexLiArr = document.querySelectorAll('.banner_index li');
+    // 定义index 记录当前的索引值
+    var index = 0;
+    //3、开启定时器
+    var timeId = setInterval(function(){
+        //累加
+        index++;
+        //判断并重置
+        if (index > 9) {
+            index = 0
+        }
+        //修改ul的位置
+        // -> x正方向是往右
+        moveUl.style.transform = 'translateX('+index * width * -1+'px)';
+    },2000);
 }
