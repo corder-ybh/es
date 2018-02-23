@@ -76,8 +76,9 @@ function cutDownTime() {
     var totalHour = 3;
     //转化为秒
     //实际开发中，应该是从后台取得的，现在所以网站都是动态的
-    var totalSec = 5;// 3*60*60;
-
+    var totalSec = totalHour * 60 * 60;// 3*60*60;
+    //加一秒以时用户看到的时间是从整数开始而不是00开始
+    totalSec ++;
     //获取想要修改的所有li标签
     //querySelectorAll querySelector 这两个方法可以传入css，css3中的选择器
     //如果想要自己封装一个类似于jq的东西，可以在内部调用这个方法
@@ -120,7 +121,7 @@ function cutDownTime() {
 
         //秒
         liArr[6].innerHTML = Math.floor(sec / 10);      //
-        liArr[7].innerHTML = sec
+        liArr[7].innerHTML = sec % 10;
     },1000)
 }
 
@@ -129,4 +130,85 @@ function banner() {
     
 }function dev() {
     //没啥子卵用，就是测试下develop和feature冲突时的情况
+    //    liArr[7].innerHTML = sec % 10;
+}
+
+//轮播图的效果
+/**
+ *  获取必须知道的变量
+ *  步骤1：不考虑过度效果 直接切换
+ *     定时器中 index++
+ *         判断是否越界
+ *         修改轮播图中ul的位置
+ *  步骤2：下方的索引li标签 修改 外观
+ *         由于是使用.current标示当前的索引值
+ *         清空所有li的class
+ *         为当前的那个li添加current
+ *  步骤3：切换用动画效果
+ *         使用css3中的transition
+ *         .style.transition='all.3s'
+ *         在获取的时候进行添加
+ *  步骤4：当切换到最后一张时，瞬间切到第一张
+ *         关闭过渡，瞬间切换 -- 以上代码进行备份
+ *  步骤5：对代码进行重构，添加进入 过渡结束知识点
+ *         由于我们在修改ul的位置时，会使用过渡，
+ *         当注册了过渡结束事件之后，每次过渡完毕，都会调用该事件
+ *             将判断index是否越界以及修改索引的代码全部迁移到过渡结束事件中
+ *
+ *             定时器逻辑
+ *                 index++;
+ *                 修改ul的位置 ->开始过渡
+ *             过渡结束逻辑
+ *                 判读index是否有效
+ *                     进行修正
+ *                 修改索引和li标签的显示
+ *
+ *  需要了解的信息：1、单个元素宽度
+ *                 2、轮播图的ul(很长的ul)
+ *                 3、索引的ul的li(li数组)
+ *  定时器逻辑：1、index++
+ *             2、修改ul位置
+ *             3、使用过渡来实现动画效果
+ */
+function banner() {
+    //1、获取变量
+    //屏幕的宽度
+    var width = document.body.offsetWidth;
+    //console.log(width);
+    //2、获取轮播图的ul
+    var moveUl = document.querySelector('.banner_images');
+
+    // 索引的li标签
+    var indexLiArr = document.querySelectorAll('.banner_index li');
+    // 定义index 记录当前的索引值
+    // 默认我们得ul已经往左边移动了一倍的宽度，最左边的图片是用来做无限轮播的不希望用户看到，所以index=1
+    var index = 1;
+    //3、开启定时器
+    var timeId = setInterval(function(){
+        //累加
+        index++;
+        //只要进入定时器，那么将过渡开启
+        moveUl.style.transition = 'all.3s';
+        //修改ul的位置
+        moveUl.style.transform = 'translateX('+index*width*-1+'px)';
+
+    },1000);
+
+    //过渡结束事件 用来修正index的值，并修改索引
+    moveUl.addEventListener('webkitTransitionEnd',function () {
+        console.log('过渡结束'+index);
+        //修正index的值
+        if (index > 8 ) {
+            index = 1;
+            //关闭过渡
+            moveUl.style.transition = '';
+            //瞬间修改一下ul的位置
+            moveUl.style.transform = 'translateX('+index*width*-1+'px)';
+        }
+        //修改li标签的class
+        for (var i = 0; i < indexLiArr.length; i++) {
+            indexLiArr[i].className = '';
+        }
+        indexLiArr[index-1].className = 'current';
+    })
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta:vp -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,
+			maximum-scale=1.0, minimum-scale=1.0">
+    <title>移动端touch事件</title>
+    <style type="text/css">
+        html,body {
+            height: 100%;
+        }
+        body {
+            background-color: darkgray;
+        }
+        div{
+            width: 20px;
+            height: 20px;
+            border: 1px solid #0094ff;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script type="text/javascript">
+    window.onload = function () {
+        //元素的事件 绑定时 如果写了 形参 会接受到一个实参
+
+        //定义变量 保存 开始的坐标值
+        var startX = 0;
+        //定义变量 保存 移动的距离
+        var moveX = 0;
+
+
+        //触摸开始的时候触发
+        document.body.addEventListener('touchstart',function (event) {
+            console.log('touchstart');
+            //console.log(event);
+            //获取起始坐标值
+            startX = event.touches[0].clientX;
+            console.log('startX：'+startX);
+        })
+        //手指移动时触发
+        document.body.addEventListener('touchmove',function (event) {
+            console.log('touchmove');
+            //console.log(event);
+            //计算手指x方向移动的距离
+            moveX = event.touches[0].clientX - startX;
+            console.log('moveX：'+moveX);
+            //直接修改div的transform
+            document.querySelector("div").style.transform = 'translateX('+moveX+'px)';
+        })
+        //手指抬起的时候触发
+        document.body.addEventListener('touchend',function (event) {
+            console.log('touchend');
+            console.log(event);
+        })
+    }
+</script>
