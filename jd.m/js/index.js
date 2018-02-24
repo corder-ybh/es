@@ -192,12 +192,18 @@ function banner() {
     // 定义index 记录当前的索引值
     // 默认我们得ul已经往左边移动了一倍的宽度，最左边的图片是用来做无限轮播的不希望用户看到，所以index=1
     var index = 1;
+    //抽取定时器过渡的代码，提高代码可读性和降低维护的难度
+    var startTransition = function () {
+        moveUl.style.transition = 'all.3s';
+    }
+
     //3、开启定时器
     var timeId = setInterval(function(){
         //累加
         index++;
         //只要进入定时器，那么将过渡开启
-        moveUl.style.transition = 'all.3s';
+        //moveUl.style.transition = 'all.3s';
+        startTransition();
         //修改ul的位置
         moveUl.style.transform = 'translateX('+index*width*-1+'px)';
 
@@ -289,12 +295,14 @@ function banner() {
             }
             //此处大小交给过渡结束事件来处理
             console.log('超过：'+moveX+',index:'+index);
-            moveUl.style.transition = 'all.3s';
+            //moveUl.style.transition = 'all.3s';
+            startTransition();
             moveUl.style.transform = 'translateX('+(index*-1*width)+'px)';
         } else {
             //没有超过最大偏移量，开启过渡吸附回去即可
             console.log('未超过：'+moveX+',index:'+index);
-            moveUl.style.transition = 'all.3s';
+            //moveUl.style.transition = 'all.3s';
+            startTransition();
             moveUl.style.transform = 'translateX('+(index*-1*width)+'px)';
         }
         //3、开启定时器
@@ -302,7 +310,8 @@ function banner() {
             //累加
             index++;
             //只要进入定时器，那么将过渡开启
-            moveUl.style.transition = 'all.3s';
+            //moveUl.style.transition = 'all.3s';
+            startTransition();
             //修改ul的位置
             moveUl.style.transform = 'translateX('+index*width*-1+'px)';
 
