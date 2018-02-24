@@ -162,6 +162,15 @@ function banner() {
  *                 判读index是否有效
  *                     进行修正
  *                 修改索引和li标签的显示
+ *  步骤6：使用touch时间，实现手指波动ul滑动效果
+ *         touchstart
+ *             记录开始值
+ *             关闭定时器
+ *             关闭过渡效果
+ *         touchmove
+ *             计算移动值
+ *             修改ul的位置，在原始值的基础上进行修改，没有过渡效果的
+ *         touchend
  *
  *  需要了解的信息：1、单个元素宽度
  *                 2、轮播图的ul(很长的ul)
@@ -204,11 +213,99 @@ function banner() {
             moveUl.style.transition = '';
             //瞬间修改一下ul的位置
             moveUl.style.transform = 'translateX('+index*width*-1+'px)';
+        }else if (index < 1) {
+            index = 8;
+            //关闭过渡
+            moveUl.style.transition = '';
+            moveUl.style.transform = 'translateX('+index*width*-1+'px)';
         }
         //修改li标签的class
         for (var i = 0; i < indexLiArr.length; i++) {
             indexLiArr[i].className = '';
         }
         indexLiArr[index-1].className = 'current';
+    });
+
+    //注册三个touch事件
+    //定义变量 记录开始的x
+    var startX = 0;
+    //定义变量 记录移动的值
+    var moveX = 0;
+    //记录distanceX
+    var distanceX = 0;
+
+    /**
+     * 触摸开始:
+     *  1、关闭定时器
+     *  2、关闭过渡效果
+     *  3、记录开始值
+     */
+    moveUl.addEventListener('touchstart',function (event) {
+        //1、关闭定时器
+        clearInterval(timeId);
+        //2、关闭过渡效果
+        moveUl.style.transition = '';
+        //3、记录开始值
+        startX = event.touches[0].clientX;
+
+    });
+
+    /**
+     * 触摸中
+     *  1、计算移动的值
+     *  2、移动ul
+     */
+    moveUl.addEventListener('touchmove',function (event) {
+        //1、计算移动的值
+        moveX = event.touches[0].clientX - startX;
+        //2、移动ul
+        //默认的移动值是index*-1*width
+        moveUl.style.transform = 'translateX('+(moveX+index*-1*width)+'px)';
+    });
+
+    /**
+     * 触摸结束事件
+     *  1、记录结束值
+     *  2、开启计时器
+     *  3、手指松开的时候 判断 移动的距离 是否吸附
+     *     由于不需要考虑正负，只需要考虑距离，Math.abs()
+     *         吸附回的值是 index*-1*width
+     *     如果移动的距离较大
+     *         需要判断正负
+     *         index++
+     *         index--
+     *         index*-1*width
+     */
+    moveUl.addEventListener('touchend',function (event) {
+        //定义最大的偏移值
+        var maxDistance = width/3;
+        //判断是否超过
+        if (Math.abs(moveX)>maxDistance) {
+            //超过了，需要开启过渡进行跳转
+            if (moveX>0) {
+                index--;
+            } else {
+                index++;
+            }
+            //此处大小交给过渡结束事件来处理
+            console.log('超过：'+moveX+',index:'+index);
+            moveUl.style.transition = 'all.3s';
+            moveUl.style.transform = 'translateX('+(index*-1*width)+'px)';
+        } else {
+            //没有超过最大偏移量，开启过渡吸附回去即可
+            console.log('未超过：'+moveX+',index:'+index);
+            moveUl.style.transition = 'all.3s';
+            moveUl.style.transform = 'translateX('+(index*-1*width)+'px)';
+        }
+        //3、开启定时器
+        timeId = setInterval(function(){
+            //累加
+            index++;
+            //只要进入定时器，那么将过渡开启
+            moveUl.style.transition = 'all.3s';
+            //修改ul的位置
+            moveUl.style.transform = 'translateX('+index*width*-1+'px)';
+
+        },1000);
     })
 }
