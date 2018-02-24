@@ -32,7 +32,12 @@
         var startX = 0;
         //定义变量 保存 移动的距离
         var moveX = 0;
-
+        //定义变量用来记录 div结束的时候，移动的距离
+        var distanceX = 0;
+        //定义 记录y方向的移动的值
+        var startY = 0;
+        var moveY = 0;
+        var distanceY = 0;
 
         //触摸开始的时候触发
         document.body.addEventListener('touchstart',function (event) {
@@ -40,22 +45,31 @@
             //console.log(event);
             //获取起始坐标值
             startX = event.touches[0].clientX;
+            startY = event.touches[0].clientY;
             console.log('startX：'+startX);
-        })
+        });
         //手指移动时触发
         document.body.addEventListener('touchmove',function (event) {
             console.log('touchmove');
             //console.log(event);
             //计算手指x方向移动的距离
             moveX = event.touches[0].clientX - startX;
+            moveY = event.touches[0].clientY - startY;
             console.log('moveX：'+moveX);
-            //直接修改div的transform
-            document.querySelector("div").style.transform = 'translateX('+moveX+'px)';
-        })
+            //直接修改div的transform，小细节，distanceX+moveX应该使用括号括起来，否制可能变成字符串拼接
+            //document.querySelector("div").style.transform = 'translateX('+(distanceX+moveX)+'px)';
+
+            //随意移动
+            document.querySelector("div").style.transform = 'translate('+(distanceX+moveX)+'px,'+(distanceY+moveY)+'px)';
+        });
         //手指抬起的时候触发
         document.body.addEventListener('touchend',function (event) {
             console.log('touchend');
-            console.log(event);
+            //console.log(event);
+            //移动结束的时候记录移动的距离,得记录之前的距离
+            distanceX += moveX;
+            distanceY += moveY;
+            console.log('distanceX:'+distanceX);
         })
     }
 </script>
