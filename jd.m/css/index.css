@@ -10,7 +10,9 @@
     height:40px;
     width:100%;
     background-color: rgb(201,21,35);
-    position: relative;
+    /*要固定在顶部，所以改为fixed*/
+    position: fixed;
+    z-index: 99;
 
     /*设置pading将input挤进去*/
     padding-left: 70px;
@@ -83,6 +85,15 @@
 .jd_banner .banner_images{
     /*10倍宽度，为了在横向放10张图片*/
     width: 1000%;
+    /*轮播图处理中添加的内容*/
+    overflow: hidden;
+    /*默认要显示的是索引为1的那一张*/
+    /*transform移动一个屏幕的宽度*/
+    -webkit-transform: translateX(-10%);
+    -moz-transform: translateX(-10%);
+    -ms-transform: translateX(-10%);
+    -o-transform: translateX(-10%);
+    transform: translateX(-10%);
 }
 .jd_banner .banner_images li{
     float: left;
