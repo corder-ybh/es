@@ -40,8 +40,7 @@ export default {
   methods: {
     fetchData() {
       getCategoryTree().then(response => {
-        console.log(response)
-        this.data2 = response.tree
+        this.data2 = response.item
       })
     },
     filterNode(value, data) {
